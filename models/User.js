@@ -13,6 +13,11 @@ const UserSchema = new mongoose.Schema({
         required  : true,
         unique :true
     },
+    payrollId: {
+        type : Number,
+        required : true,
+        unique : true
+    },
     date : {
         type : Date,
         default : Date.now
