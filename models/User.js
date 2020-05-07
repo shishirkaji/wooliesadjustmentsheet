@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
     email : {
         type : String,
         required  : true,
-        unique :true
+        // unique :true
     },
     payrollId: {
         type : Number,
@@ -21,6 +21,15 @@ const UserSchema = new mongoose.Schema({
     date : {
         type : Date,
         default : Date.now
+    }
+    ,position : {
+        type: String,
+        default : "manager"
+    },
+
+    department:{
+        type : String,
+        required : true
     }
 });
 module.exports = User = mongoose.model('user', UserSchema)

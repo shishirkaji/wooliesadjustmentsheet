@@ -15,4 +15,5 @@ const sign = payload =>{
         )
     })
 }
+
 module.exports = sign;

@@ -4,6 +4,9 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const { check, validationResult } = require("express-validator");
 const signjwt = require("./jwtsign");
+const config = require('config');
+const auth = require("../../middleware/auth")
+
 
 // Route: Post api/user
 // desc: register users
@@ -20,16 +23,21 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.statuts(400).json({ errors: errors.array() });
+      return res.status(400).json({ errors: errors.array() });
     }
-    const { name, email, payrollId, password } = req.body;
+    const { name, email, payrollId, password, department } = req.body;
     try {
       user = new User({
         name,
         email,
         password,
         payrollId,
+        department,
       });
+      const checkPayrollId = await User.findOne({ payrollId: payrollId });
+      if (checkPayrollId) {
+        return res.status(400).json({ error: "user exists" });
+      }
       const salt = await bcrypt.genSaltSync(10);
       user.password = await bcrypt.hash(password, salt);
 
@@ -84,10 +92,24 @@ router.post(
           .json({ errors: [{ msg: "invalid credentials" }] });
       });
     } catch (error) {
-        console.log(error.message)
-        res.status(500).send("server error")
+      console.log(error.message);
+      res.status(500).send("server error");
     }
   }
 );
-
+// Route: Post api/user/loaduser
+// desc: loaduser
+// access semi public
+router.get("/loaduser",auth, async (req, res) => {
+const user = await User.findById(req.user.id).select("-password");
+return res.status(200).json({user})
+});
+// Route : Delete
+// desc : deletes all the record in the db
+// Warning caution before use !!
+router.delete("/", async (req, res) => {
+  await User.deleteMany({ name: "Shishir" }, () => {
+    return res.send("all the records username Shishir are deleted");
+  });
+});
 module.exports = router;
