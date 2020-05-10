@@ -14,5 +14,7 @@ var CommentsSchema = new Schema({
         required : true
     }
 })
+// test
  module.exports = Comments  = mongoose.model("comments", CommentsSchema);
+
  
