@@ -1,4 +1,4 @@
-var mongoose = reqiuire("mongoose");
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var CommentsSchema = new Schema({
     comment : {
@@ -10,5 +10,9 @@ var CommentsSchema = new Schema({
         required : true
     },
     addedBy:{
+        type  : mongoose.Schema.Types.ObjectId,
+        required : true
     }
 })
+ module.exports = Comments  = mongoose.model("comments", CommentsSchema);
+ 

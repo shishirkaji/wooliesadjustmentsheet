@@ -4,9 +4,8 @@ const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const { check, validationResult } = require("express-validator");
 const signjwt = require("./jwtsign");
-const config = require('config');
-const auth = require("../../middleware/auth")
-
+const config = require("config");
+const auth = require("../../middleware/auth");
 
 // Route: Post api/user
 // desc: register users
@@ -100,9 +99,16 @@ router.post(
 // Route: Post api/user/loaduser
 // desc: loaduser
 // access semi public
-router.get("/loaduser",auth, async (req, res) => {
-const user = await User.findById(req.user.id).select("-password");
-return res.status(200).json({user})
+router.get("/loaduser", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    console.log("reached the mofucking api");
+    console.log(user);
+    return res.status(200).json({ user });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("server error");
+  }
 });
 // Route : Delete
 // desc : deletes all the record in the db
