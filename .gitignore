@@ -4,3 +4,4 @@ config/default.json
 bfg.jar
 /constraint.txt
 package-lock.json
+\client\woolies-adjustment\build

@@ -120,13 +120,12 @@ const FormTwo = ({ values, registered, nextStep, handleDate }) => {
       if (res.status === 200) {
         console.log("registeed from form 2");
         registered();
-      } else {
-        state.alert = "User exists check the Payroll Id";
+      } else if (res.status === 400){
+        state.alert = "All the below fields are mandatory";
       }
     } catch (err) {
-      setState({ ...state, alert: "User exists! Please check the payroll Id" });
-
-      console.log(state.alert);
+      setState({ ...state, alert: "All the below fields are mandatory" });
+      console.log(err);
       return false;
     }
   };

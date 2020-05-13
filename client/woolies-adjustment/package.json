@@ -43,5 +43,5 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0"
   },
-  "proxy": "http://3.135.232.68:8000/"
+  "proxy": "http://localhost:8000/"
 }

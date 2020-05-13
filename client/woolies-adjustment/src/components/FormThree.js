@@ -4,7 +4,7 @@ import { Button, Form, FormControl} from "react-bootstrap";
 
 const FormThree = ({ nextStep, handleTtime, handleChange, values }) => {
   const [state, setState] = useState({
-    alert: null,
+    alert: "Note the clock is 24 hours.",
     stateStartTime: null,
     stateEndTime: null,
   });
