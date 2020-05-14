@@ -104,7 +104,7 @@ const FormTwo = ({ values, registered, nextStep, handleDate }) => {
         "Content-Type": "application/json",
       },
     };
-    console.log("reached handle submit");
+    // console.log("reached handle submit");
     const { name, payrollId, phoneNumber, email, department } = state;
     const body = JSON.stringify({
       name,
@@ -115,17 +115,17 @@ const FormTwo = ({ values, registered, nextStep, handleDate }) => {
     });
     try {
       const res = await axios.post("api/employee/addEmployee", body, config);
-      console.log(res.status);
+      // console.log(res.status);
 
       if (res.status === 200) {
-        console.log("registeed from form 2");
+        // console.log("registeed from form 2");
         registered();
       } else if (res.status === 400){
         state.alert = "All the below fields are mandatory";
       }
     } catch (err) {
       setState({ ...state, alert: "All the below fields are mandatory" });
-      console.log(err);
+      // console.log(err);
       return false;
     }
   };

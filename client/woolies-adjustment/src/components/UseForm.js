@@ -57,7 +57,7 @@ const UseForm = () => {
          newQuote = res.data[randomNumber];
         setFormData({...formData, quote : newQuote});
       } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
   }
   const reset = () => {
@@ -76,7 +76,7 @@ const UseForm = () => {
     });
   };
   const registered = () => {
-    console.log("reached registered");
+    // console.log("reached registered");
     setFormData({
       ...formData,
       alert: "You have successfully registered",
@@ -111,15 +111,15 @@ const UseForm = () => {
     });
     try {
       const res = await axios.post("api/adjustment", body, config);
-      console.log(res);
+      // console.log(res);
       if (res) {
-        console.log("success");
+        // console.log("success");
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       return <div>Server error</div>;
     }
-    console.log("confirmed now make contact with the api");
+    // console.log("confirmed now make contact with the api");
     nextStep();
   };
   const handleDate = (formattedDate, formattedDay) => {
