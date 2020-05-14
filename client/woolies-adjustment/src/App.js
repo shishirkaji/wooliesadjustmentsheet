@@ -43,7 +43,6 @@ const App = () => {
     userName: localStorage.userName ? localStorage.userName : null,
   });
   useEffect(() => {
-    console.log("reached appjs use effect");
     loadUserawait();
     // if (localStorage.token) {
     //   setAuthToken(localStorage.token);
@@ -69,7 +68,6 @@ const App = () => {
   const loadUser = async () => {
     setAuthToken(localStorage.token);
     try {
-      console.log("reached the loaduser");
       const res = await axios.get("/api/user/loaduser");
       // return user.department;
       var user = res.data.user;
@@ -80,7 +78,7 @@ const App = () => {
         localStorage.setItem("position", user.position);
         // localStorage.setItem("user", JSON.stringify(user));
 
-        console.log(user);
+        // console.log(user);
         setState({
           ...state,
           position: user.position,
@@ -92,14 +90,12 @@ const App = () => {
         logout();
       }
     } catch (error) {
-      console.log("no token to load the user");
       logout();
 
       // return <div>Authentication error</div>;
     }
   };
   const logout=()=>{
-    console.log("logged out")
     localStorage.clear();
   }
   const setUser = (user) => {

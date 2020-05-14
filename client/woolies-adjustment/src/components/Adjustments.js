@@ -15,8 +15,8 @@ const Adjustments = ({ masterState }) => {
 
   useEffect(() => {
     loadAdjustment();
-    console.log("reached useeffect adjustment");
-    console.log(masterState.user);
+    // console.log("reached useeffect adjustment");
+    // console.log(masterState.user);
     // setState({...state, user: (masterState.user!==null ? masterState.user : null)})
   }, [state.reload]);
 
@@ -30,16 +30,16 @@ const Adjustments = ({ masterState }) => {
         setState({ ...state, adjustments: res.data, loading: false });
       }
     } catch (error) {
-      console.log("loadadjuetment error ");
+      // console.log("loadadjuetment error ");
       return <div>Server error</div>;
     }
   };
   const renderEditComment = () => {
-    console.log("edit comment true");
+    // console.log("edit comment true");
     return <Comment editComment={true} />;
   };
   const renderReadOnlyComment = () => {
-    console.log("edit comment false");
+    // console.log("edit comment false");
 
     return <Comment editComment={false} />;
   };

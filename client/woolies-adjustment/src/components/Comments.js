@@ -22,7 +22,7 @@ const Comments = (editComment) => {
     try {
       const res = await axios.get(route);
       if (res) {
-        console.log(res)
+        // console.log(res)
         if (res){
           // there will be an error if there is no comment because t
           // cause the response is  not json with data.comment need to fix api 

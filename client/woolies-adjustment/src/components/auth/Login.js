@@ -16,8 +16,6 @@ const Login = ({ masterState, setUser, setToken, setDate, loadUser }) => {
   });
 
   useEffect(() => {
-    console.log(masterState.token);
-    console.log("reached here at useeffect login");
     // let formattedd_date =
     //   state.selectedDate.getFullYear() +
     //   "-" +
@@ -31,7 +29,7 @@ const Login = ({ masterState, setUser, setToken, setDate, loadUser }) => {
 
     if (localStorage.token) {
       if (masterState.token !== localStorage.token) {
-        console.log("loaded token from the localstorage from login use effect");
+        // console.log("loaded token from the localstorage from login use effect");
         setToken(localStorage.token);
       }
     }
@@ -59,7 +57,7 @@ const Login = ({ masterState, setUser, setToken, setDate, loadUser }) => {
           // token set once the token is set it should directly show the pick date part in the login page
           const token = res.data.token;
           localStorage.setItem("token", token);
-          console.log("token set from submit fucntion in login js");
+          // console.log("token set from submit fucntion in login js");
           let formattedd_date =
             state.selectedDate.getFullYear() +
             "-" +
@@ -67,7 +65,7 @@ const Login = ({ masterState, setUser, setToken, setDate, loadUser }) => {
             "-" +
             state.selectedDate.getDate();
           if (masterState.adjustmentDate === null) {
-            console.log("reached the localstorage date setting if statement");
+            // console.log("reached the localstorage date setting if statement");
             localStorage.setItem("adjustmentDate", formattedd_date);
             // setDate(formattedd_date);
           }
@@ -75,7 +73,7 @@ const Login = ({ masterState, setUser, setToken, setDate, loadUser }) => {
           // loadUser();
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         setState({ ...state, alert: "Invalid credentials" });
       }
     }
@@ -157,10 +155,10 @@ const Login = ({ masterState, setUser, setToken, setDate, loadUser }) => {
     // show the option to choose date of adjustmets for approval
     // allow a button to approve
     if (masterState.user === null) {
-      console.log("masterState user is null");
+      // console.log("masterState user is null");
       // loadUser();
     }
-    console.log(state.selectedDate);
+    // console.log(state.selectedDate);
 
     return (
       <div>
@@ -191,8 +189,8 @@ const Login = ({ masterState, setUser, setToken, setDate, loadUser }) => {
       </div>
     );
   };
-  console.log("reached just before return ");
-  console.log(masterState.user);
+  // console.log("reached just before return ");
+  // console.log(masterState.user);
   return (
     // alert div start
     <div>
