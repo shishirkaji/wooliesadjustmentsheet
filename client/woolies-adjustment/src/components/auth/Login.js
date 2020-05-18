@@ -173,7 +173,7 @@ const Login = ({ masterState, setUser, setToken, setDate, loadUser }) => {
           Welcome to your Dashboard
         </strong>
         <br />
-        <Form.Label>Pick date to get adjustmets</Form.Label>
+        <Form.Label>Pick date to get adjustments</Form.Label>
         <Form class="col-xs-6 col-sm-4">
           <DatePicker
             selected={state.selectedDate}
